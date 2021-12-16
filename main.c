@@ -12,6 +12,9 @@ int main(int argc, char *argv[])
 	int linecount = 0;
 	ssize_t linesize;
 	FILE *file;
+	char **command = malloc(sizeof(char *) * buffsize);
+	char *parse = NULL;
+	int x;
 
 	if (argc != 2)
 	{
@@ -29,9 +32,17 @@ int main(int argc, char *argv[])
 	{
 		linecount++;
 		printf("%s", buffer);
+		parse = strtok(buffer, " \t\n");
+		for (x = 0; parse != NULL; x++)
+		{
+			command[x] = parse;
+			parse = strtok(NULL, " \t\n");
+			printf("%s\n", command[x]);
+		}
 		linesize = getline(&buffer, &buffsize, file);
 	}
 	free(buffer);
+	free(command);
 	fclose(file);
 	return (EXIT_SUCCESS);
 }
