@@ -12,9 +12,9 @@ int main(int argc, char *argv[])
 	int linecount = 0;
 	ssize_t linesize;
 	FILE *file;
-	char **command = malloc(sizeof(char *) * buffsize);
-	char *parse = NULL;
-	int x;
+	char *command = NULL;
+	stack_t *stack = NULL;
+	int exitstatus = EXIT_SUCCESS;
 
 	if (argc != 2)
 	{
@@ -31,18 +31,20 @@ int main(int argc, char *argv[])
 	while (linesize >= 0)
 	{
 		linecount++;
-		printf("%s", buffer);
-		parse = strtok(buffer, " \t\n");
-		for (x = 0; parse != NULL; x++)
+		command = strtok(buffer, " \t\n");
+		arg = strtok(NULL, " \t\n");
+		if (arg == NULL)
+			arg = "notdigit";
+		getfunction(&stack, command, linecount);
+		if (strcmp(arg, "error") == 0)
 		{
-			command[x] = parse;
-			parse = strtok(NULL, " \t\n");
-			printf("%s\n", command[x]);
+			exitstatus = EXIT_FAILURE;
+			free(buffer);
+			break;
 		}
 		linesize = getline(&buffer, &buffsize, file);
 	}
-	free(buffer);
-	free(command);
+	free_stack(&stack);
 	fclose(file);
-	return (EXIT_SUCCESS);
+	exit(exitstatus);
 }

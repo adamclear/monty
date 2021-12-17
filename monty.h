@@ -6,6 +6,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -37,14 +38,29 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-extern int temp;
+#define OPCODES { \
+	{"push", push},\
+	{"pall", pall},\
+	{"pint", NULL},\
+	{"pop", NULL},\
+	{"swap", NULL},\
+	{"add", NULL},\
+	{"nop", NULL},\
+	{NULL, NULL}\
+	};
 
-void push(stack_t **stack, unsigned long int line_count);
-void pall(stack_t **stack, unsigned long int line_count);
-void pint(stack_t **stack, unsigned long int line_count);
-void pop(stack_t **stack, unsigned long int line_count);
-void swap(stack_t **stack, unsigned long int line_count);
-void add(stack_t **stack, unsigned long int line_count);
-void nop(stack_t **stack, unsigned long int line_count);
+extern char *arg;
+char *arg;
+
+void push(stack_t **stack, unsigned int line_number);
+void pall(stack_t **stack, unsigned int line_number);
+void pint(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
+void swap(stack_t **stack, unsigned int line_number);
+void add(stack_t **stack, unsigned int line_number);
+void nop(stack_t **stack, unsigned int line_number);
+void getfunction(stack_t **stack, char *cmd, unsigned int lncnt);
+void free_stack(stack_t **stack);
+void printstack(stack_t *stack);
 
 #endif
