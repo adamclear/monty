@@ -44,7 +44,7 @@ typedef struct instruction_s
 	{"pint", pint},\
 	{"pop", pop},\
 	{"swap", swap},\
-	{"add", NULL},\
+	{"add", add},\
 	{"nop", nop},\
 	{NULL, NULL}\
 	};
