@@ -5,7 +5,7 @@
  * @lncnt: The line count from main
  * @arg: Argument passed with function
  */
-void push(stack_t **stack, unsigned int line_count)
+void push(stack_t **stack, unsigned long int line_count)
 {
 	stack_t *newnode = malloc(sizeof(stack_t));
 
