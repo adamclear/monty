@@ -5,7 +5,7 @@
  * @lncnt: The line count from main
  * @arg: Argument passed with function
  */
-void push(stack_t **stack, unsigned int lncnt)
+void push(stack_t **stack, unsigned int line_count)
 {
 	stack_t *newnode = malloc(sizeof(stack_t));
 
@@ -17,7 +17,7 @@ void push(stack_t **stack, unsigned int lncnt)
 	}
 	if ((isdigit(arg)) == 1)
 	{
-		fprintf(stderr, "L%d: usage: push integer\n", lncnt);
+		fprintf(stderr, "L%d: usage: push integer\n", line_count);
 		exit(EXIT_FAILURE);
 	}
 	newnode->n = arg;
