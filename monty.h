@@ -46,8 +46,8 @@ typedef struct instruction_s
 	{"swap", swap},\
 	{"add", add},\
 	{"nop", nop},\
-	{NULL, NULL}\
-	};
+	{NULL, NULL},\
+	}
 
 extern char *arg;
 char *arg;
