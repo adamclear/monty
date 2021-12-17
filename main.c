@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
 	FILE *file;
 	char *command = NULL;
 	stack_t *stack = NULL;
-	int exitstatus = EXIT_SUCCESS, linecount = 0;
+	int exitstatus = EXIT_SUCCESS, linecount = 1;
 
 	if (!buffer)
 	{
@@ -31,7 +31,6 @@ int main(int argc, char *argv[])
 	linesize = getline(&buffer, &buffsize, file);
 	while (linesize >= 0)
 	{
-		linecount++;
 		command = strtok(buffer, " \t\n");
 		arg = strtok(NULL, " \t\n");
 		if (arg == NULL)
@@ -43,6 +42,7 @@ int main(int argc, char *argv[])
 			break;
 		}
 		linesize = getline(&buffer, &buffsize, file);
+		linecount++;
 	}
 	free(buffer), free_stack(&stack), fclose(file),	exit(exitstatus);
 }
