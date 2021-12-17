@@ -45,7 +45,7 @@ typedef struct instruction_s
 	{"pop", NULL},\
 	{"swap", NULL},\
 	{"add", NULL},\
-	{"nop", NULL},\
+	{"nop", nop},\
 	{NULL, NULL}\
 	};
 
