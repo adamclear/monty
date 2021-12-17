@@ -31,8 +31,8 @@ int main(int argc, char *argv[])
 	linesize = getline(&buffer, &buffsize, file);
 	while (linesize >= 0)
 	{
-		command = strtok(buffer, " \t\n");
-		arg = strtok(NULL, " \t\n");
+		command = strtok(buffer, " \t\n\r");
+		arg = strtok(NULL, " \t\n\r");
 		if (arg == NULL)
 			arg = "notdigit";
 		getfunction(&stack, command, linecount);
