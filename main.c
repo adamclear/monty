@@ -9,18 +9,19 @@ int main(int argc, char *argv[])
 {
 	size_t buffsize = 1024;
 	char *buffer = malloc(buffsize * sizeof(char));
-	int linecount = 0;
 	ssize_t linesize;
 	FILE *file;
 	char *command = NULL;
 	stack_t *stack = NULL;
-	int exitstatus = EXIT_SUCCESS;
+	int exitstatus = EXIT_SUCCESS, linecount = 0;
 
-	if (argc != 2)
+	if (!buffer)
 	{
-		fprintf(stderr, "USAGE: monty file\n");
+		free(buffer), fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
+	if (argc != 2)
+		fprintf(stderr, "USAGE: monty file\n"),	exit(EXIT_FAILURE);
 	file = fopen(argv[1], "r");
 	if (!file)
 	{
@@ -43,8 +44,5 @@ int main(int argc, char *argv[])
 		}
 		linesize = getline(&buffer, &buffsize, file);
 	}
-	free(buffer);
-	free_stack(&stack);
-	fclose(file);
-	exit(exitstatus);
+	free(buffer), free_stack(&stack), fclose(file),	exit(exitstatus);
 }
