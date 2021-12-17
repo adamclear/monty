@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
 
 	if (argc != 2)
 	{
-		fprintf(stderr, "Usage: monty file\n");
+		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 	file = fopen(argv[1], "r");
@@ -39,11 +39,11 @@ int main(int argc, char *argv[])
 		if (strcmp(arg, "error") == 0)
 		{
 			exitstatus = EXIT_FAILURE;
-			free(buffer);
 			break;
 		}
 		linesize = getline(&buffer, &buffsize, file);
 	}
+	free(buffer);
 	free_stack(&stack);
 	fclose(file);
 	exit(exitstatus);
