@@ -4,20 +4,16 @@
  * @stack: the stack to be freed
  * Return: void
  */
-void free_stack(stack_t *stack)
+void free_stack(stack_t **stack)
 {
-	stack_t *current;
-	stack_t *next;
+	stack_t *current = *stack;
+	stack_t *freenode;
 
-	if (stack)
+	while (current)
 	{
-		current = stack;
-		while (current)
-		{
-			next = current->prev;
-			free(current);
-			current = next;
-		}
+		freenode = current;
+		current = current->prev;
+		free(freenode);
 	}
 return;
 }
