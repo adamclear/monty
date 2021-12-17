@@ -41,7 +41,7 @@ typedef struct instruction_s
 #define OPCODES { \
 	{"push", push},\
 	{"pall", pall},\
-	{"pint", NULL},\
+	{"pint", pint},\
 	{"pop", NULL},\
 	{"swap", NULL},\
 	{"add", NULL},\

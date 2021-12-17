@@ -18,6 +18,8 @@ void push(stack_t **stack, unsigned int line_number)
 	}
 	while (*arg)
 	{
+		if (*arg == '-')
+			arg++;
 		if (isdigit(*arg) == 0)
 		{
 			fprintf(stderr, "L%d: usage: push integer\n", line_number);
