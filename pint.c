@@ -6,11 +6,19 @@
  * @line_count: line count from main
  * Return: void
  */
-void pint(stack_t **stack, unsigned long int line_count);
+void pint(stack_t **stack, unsigned int line_number)
 {
-	if (!stack)
-	{
-		printf("L%ld: can't pint, stack empty\n", line_count);
+	stack_t *current;
 
+	current = *stack;
+	if (*stack)
+	{
+		printf("%d\n", current->n);
+		return;
+	}
+	else
+	{
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+		exit(EXIT_FAILURE);
 	}
 }
