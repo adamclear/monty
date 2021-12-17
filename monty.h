@@ -42,7 +42,7 @@ typedef struct instruction_s
 	{"push", push},\
 	{"pall", pall},\
 	{"pint", pint},\
-	{"pop", NULL},\
+	{"pop", pop},\
 	{"swap", NULL},\
 	{"add", NULL},\
 	{"nop", nop},\
