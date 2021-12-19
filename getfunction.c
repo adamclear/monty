@@ -23,4 +23,5 @@ void getfunction(stack_t **stack, char *cmd, unsigned int lncnt)
 		}
 	}
 	fprintf(stderr, "L%d: unknown instruction %s\n", lncnt, cmd);
+	arg = "error";
 }
